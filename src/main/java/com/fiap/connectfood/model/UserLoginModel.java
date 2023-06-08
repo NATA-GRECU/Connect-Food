@@ -10,6 +10,8 @@ public class UserLoginModel {
 
     private String password;
 
+    private String cnpj;
+
     private String token;
 
     private String photo;
@@ -70,5 +72,13 @@ public class UserLoginModel {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 }
