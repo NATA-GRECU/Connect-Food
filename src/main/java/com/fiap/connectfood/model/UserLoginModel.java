@@ -16,6 +16,8 @@ public class UserLoginModel {
 
     private String photo;
 
+    private String description;
+
     private String type;
 
     public long getId() {
@@ -80,5 +82,13 @@ public class UserLoginModel {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

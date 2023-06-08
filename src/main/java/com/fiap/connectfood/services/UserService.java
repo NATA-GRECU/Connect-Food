@@ -70,6 +70,7 @@ public class UserService {
         userLogin.get().setPhoto(userModel.get().getPhoto());
         userLogin.get().setType(userModel.get().getType());
         userLogin.get().setCnpj(userModel.get().getCnpj());
+        userLogin.get().setDescription(userModel.get().getDescription());
 
         return userLogin;
     }
