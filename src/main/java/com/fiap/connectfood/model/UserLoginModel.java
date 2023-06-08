@@ -20,6 +20,8 @@ public class UserLoginModel {
 
     private String type;
 
+    private String endereco;
+
     public long getId() {
         return id;
     }
@@ -90,5 +92,13 @@ public class UserLoginModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }

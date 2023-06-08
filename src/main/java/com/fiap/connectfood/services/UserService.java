@@ -71,6 +71,12 @@ public class UserService {
         userLogin.get().setType(userModel.get().getType());
         userLogin.get().setCnpj(userModel.get().getCnpj());
         userLogin.get().setDescription(userModel.get().getDescription());
+        userLogin.get().setEndereco(userModel.get().getAddresses().get(0).getRua()
+                + ", " + userModel.get().getAddresses().get(0).getNumero()
+                + " - " + userModel.get().getAddresses().get(0).getBairro()
+                + ", " + userModel.get().getAddresses().get(0).getCidade()
+                + ", " + userModel.get().getAddresses().get(0).getEstado()
+                + " - Brasil");
 
         return userLogin;
     }
