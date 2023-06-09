@@ -25,11 +25,16 @@ public class DoacaoModel implements Serializable {
 	@JoinColumn(name = "id_inst")
 	private UserModel instituicao;
 
-	@JoinColumn(name = "dt_agendamento")
+	@Column(name = "dt_agendamento")
 	@Temporal(TemporalType.DATE)
-	private Date date;
+	private Date dataAgendamento;
 
+	@Column(name = "finalizada")
 	private boolean doacaoFinalizada;
+
+	@Column(name = "dt_finalizado")
+	@Temporal(TemporalType.DATE)
+	private Date dataFinalizado;
 
 	public DoacaoModel() {
 
@@ -78,12 +83,12 @@ public class DoacaoModel implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDataAgendamento() {
+		return dataAgendamento;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDataAgendamento(Date dataAgendamento) {
+		this.dataAgendamento = dataAgendamento;
 	}
 
 	public boolean isDoacaoFinalizada() {
@@ -100,4 +105,11 @@ public class DoacaoModel implements Serializable {
 				+ descricao +"]";
 	}
 
+	public Date getDataFinalizado() {
+		return dataFinalizado;
+	}
+
+	public void setDataFinalizado(Date dataFinalizado) {
+		this.dataFinalizado = dataFinalizado;
+	}
 }

@@ -14,13 +14,15 @@ public interface DoacaoRepository extends JpaRepository<DoacaoModel, Integer> {
 
     List<DoacaoModel> findDonationByInstituicao(String intituicao);
 
-    List<DoacaoModel> findDonationByDate(Date publicationDate);
+    List<DoacaoModel> findDonationByDataAgendamento(Date publicationDate);
 
-    List<DoacaoModel> findDoacaoByDateBetween(Date publicationTimeStart, Date publicationTimeEnd);
+    List<DoacaoModel> findDoacaoByDataAgendamentoBetween(Date publicationTimeStart, Date publicationTimeEnd);
 
     List<DoacaoModel> findByDoacaoFinalizada(boolean doacaoFinalizada);
 
     List<DoacaoModel> findDonationByInstituicaoAndDoacaoFinalizadaTrue(UserModel user);
     List<DoacaoModel> findDonationByRestauranteAndDoacaoFinalizadaTrue(UserModel user);
 
+    List<DoacaoModel> findByRestaurante_Cnpj(String cnpj);
+    List<DoacaoModel> findByInstituicao_Cnpj(String cnpj);
 }

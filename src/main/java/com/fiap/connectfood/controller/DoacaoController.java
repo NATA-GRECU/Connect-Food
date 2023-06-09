@@ -117,10 +117,20 @@ public class DoacaoController {
     }
 
     @GetMapping("/finalizadas")
+    @ApiOperation("Buscar doações finalizadas")
     public ResponseEntity<List<DoacaoModel>> listarDoacoesFinalizadas(@RequestParam (value = "cnpj") String cnpj) {
         List<DoacaoModel> doacoesFinalizadas = doacaoService.findByDoacaoFinalizada(cnpj);
         return ResponseEntity.ok(doacoesFinalizadas);
     }
+
+    @GetMapping("/get-by-cnpj/{cnpj}")
+    @ApiOperation("Trazer todas doações por CNPJ")
+    public ResponseEntity<List<DoacaoModel>> getDonationsByCnpj(@PathVariable (value = "cnpj") String cnpj) {
+        List<DoacaoModel> doacoes = doacaoService.findDoacaoByCnpj(cnpj);
+
+        return ResponseEntity.ok().body(doacoes);
+    }
+
 
     //WEB Endpoints
     @GetMapping("/total-doacao")

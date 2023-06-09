@@ -7,10 +7,7 @@ import com.fiap.connectfood.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class DoacaoService {
@@ -61,12 +58,12 @@ public class DoacaoService {
 
     public List<DoacaoModel> getDonationByDate(Date date)
     {
-        return doacaoRepository.findDonationByDate(date);
+        return doacaoRepository.findDonationByDataAgendamento(date);
     }
 
     public List<DoacaoModel> getDonationByDateBetween(Date startDate, Date endDate)
     {
-        return doacaoRepository.findDoacaoByDateBetween(startDate, endDate);
+        return doacaoRepository.findDoacaoByDataAgendamentoBetween(startDate, endDate);
     }
 
     public List<DoacaoModel> findByDoacaoFinalizada(String cnpj) {
@@ -82,7 +79,18 @@ public class DoacaoService {
     public void finalizarDoacao(Integer id) {
         DoacaoModel doacaoModel = doacaoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Doação inexistente"));
         doacaoModel.setDoacaoFinalizada(true);
+        doacaoModel.setDataFinalizado(Calendar.getInstance().getTime());
         doacaoRepository.save(doacaoModel);
+    }
+
+    public List<DoacaoModel> findDoacaoByCnpj(String cnpj)
+    {
+        List<DoacaoModel> doacoes = new ArrayList<>();
+
+        doacoes.addAll(doacaoRepository.findByInstituicao_Cnpj(cnpj));
+        doacoes.addAll(doacaoRepository.findByRestaurante_Cnpj(cnpj));
+
+        return doacoes;
     }
 
 }
